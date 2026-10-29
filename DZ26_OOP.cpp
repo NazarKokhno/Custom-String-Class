@@ -92,7 +92,7 @@ public:
 		return result;
 	}
 
-	String operator*(const String& other)
+	String operator*(const String& other) const
 	{
 		cout << "Operator *: " << this << endl;
 
@@ -122,7 +122,7 @@ public:
 		return intersection;
 	}
 
-	String operator/(const String& other)
+	String operator/(const String& other) const
 	{
 		cout << "Operator /: " << this << endl;
 
