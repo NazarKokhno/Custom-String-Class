@@ -14,14 +14,14 @@ private:
 public:
 	String()
 	{
-		cout << "Default const: " << this << endl;
+		cout << "Default constructor called. Object address: " << this << endl;
 		arrChars = new char[80 + 1];
 		arrChars[0] = '\0';
 	}
 
 	explicit String(int size)
 	{
-		cout << "Size const: " << this << endl;
+		cout << "Size constructor called. Object address: " << this << endl;
 		if (size < 0)
 			size = 0;
 		
@@ -33,7 +33,7 @@ public:
 
 	String(const char* arrChars):arrChars(nullptr)
 	{
-		cout << "Parametr const: " << this << endl;
+		cout << "Parameterized constructor called. Object address: " << this << endl;
 
 		if (arrChars == nullptr)
 		{
@@ -50,7 +50,7 @@ public:
 	
 	String(const String& other)
 	{
-		cout << "Copy const: " << this << endl;
+		cout << "Copy constructor called. Object address: " << this << endl;
 
 		size_t length = strlen(other.arrChars);
 		arrChars = new char[length + 1];
@@ -59,7 +59,7 @@ public:
 
 	String& operator=(const String& other)
 	{
-		cout << "Operator =: " << this << endl;
+		cout << "Assignment operator called. Object address: " << this << endl;
 
 		if (this == &other)
 			return *this;
@@ -76,7 +76,7 @@ public:
 
 	String operator+(const String& other) const
 	{
-		cout << "Operator +: " << this << endl;
+		cout << "Addition operator called. Object address: " << this << endl;
 
 		size_t length1 = strlen(arrChars);
 		size_t length2 = strlen(other.arrChars);
@@ -95,7 +95,7 @@ public:
 
 	String operator*(const String& other) const
 	{
-		cout << "Operator *: " << this << endl;
+		cout << "Intersection operator called. Object address: " << this << endl;
 
 		size_t length1 = strlen(arrChars);
 		size_t length2 = strlen(other.arrChars);
@@ -125,7 +125,7 @@ public:
 
 	String operator/(const String& other) const
 	{
-		cout << "Operator /: " << this << endl;
+		cout << "Difference operator called. Object address: " << this << endl;
 
 		size_t length1 = strlen(arrChars);
 		size_t length2 = strlen(other.arrChars);
@@ -165,7 +165,7 @@ public:
 
 	void show()
 	{
-		cout << "Show(): " << this << endl;
+		cout << "show() method called. Object address: " << this << endl;
 
 		cout << arrChars;
 	}
@@ -173,7 +173,7 @@ public:
 	
 	~String()
 	{
-		cout << "Destr: " << this << endl;
+		cout << "Destructor called. Object address: " << this << endl;
 
 		delete[] arrChars;
 	}
@@ -186,6 +186,8 @@ public:
 
 istream& operator>>(istream& is, String& str)
 {
+	cout << "Input operator called. Object address: " << &str << endl;
+
 	char buffer[1024];
 
 	is >> buffer;
@@ -206,6 +208,8 @@ istream& operator>>(istream& is, String& str)
  
 ostream& operator<<(ostream& os, const String& str)
 {
+	cout << "Output operator called. Object address: " << &str << endl;
+
 	os << str.arrChars;
 	return os;
 }
